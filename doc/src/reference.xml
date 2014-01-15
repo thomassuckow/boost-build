@@ -163,6 +163,29 @@ ECHO [ glob-tree *.cpp : .svn ] ;
         </para></listitem>
       </varlistentry>
 
+      <varlistentry id="bbv2.reference.check-target-builds">
+        <indexterm><primary>check-target-builds</primary></indexterm>
+        <term><literal>check-target-builds</literal></term>
+
+        <listitem><para>Conditionally returns a set of properties based on
+        whether the target builds. This is useful for tasks normally accomplished with configure.
+        </para>
+
+        <para>
+        Syntax:
+        </para>
+        <para>
+        <code>check-target-builds target message ? : true-properties * : false-properties *</code>
+        </para>
+
+        <para>
+        <programlisting>
+alias foobar : : : : [ check-target-builds has_foo "System has foo" : &lt;library&gt;foo : &lt;library&gt;bar ] ; 
+        </programlisting>
+        will make the alias <literal>foobar</literal> link library <literal>foo</literal> if target <literal>has_foo</literal> compiles, otherwise it will link library <literal>bar</literal>.
+        </para></listitem>
+      </varlistentry>
+
       <varlistentry>
         <term><literal>project</literal></term>
 
